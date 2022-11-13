@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    .textview{
+	  border: 2px solid black;
+	  display: inline-block;
+	  margin: 2px;
+	  width: 198px;
+	  height: 29px;
+	  font-size: 20px;
+	  font-weight: bold;
+	  background-color: white;
+	  
+  }
+  
+  .equalButton {
+	  cursor: pointer;
+	  display: inline-block;
+	  margin: 2px;
+	  width: 42px;
+	  height:91px;
+	  outline: none;
+	  font-size: 20px;
+	  font-weight: bold;
+	  border-radius: 10px;
+	
+  }
+  
+  .button {
+	  cursor: pointer;
+	  display: inline-block;
+	  margin: 2px;
+	  width: 42px;
+	  height: 42px;
+	  font-size: 20px;
+	  font-weight: bold;
+	  border-radius: 10px;
+	  outline: none;
+	
+  }
+  
+  .button:active, .allclearButton:active,.equalButton:active{
+	  background-color: #57f57e;
+	  box-shadow: 0 3px rgb(224, 243, 156);
+	  transform: translateY(4px);
+	}
+  
+  
+  
+  .button:hover,.equalButton:hover {
+	  background-color: #3ff375;
+	  box-shadow: 0px 0px 2px #FFBA75, inset 0px -20px 1px #a7e92e;
+	  border-top: 2px solid #FFF;
+	  border-right: 2px solid #FFF;
+	  border-bottom: 2px solid yellow;
+	  border-left: 2px solid rgb(248, 248, 76);
+  }
+  
+  .ClearButton {
+	  border-radius: 10px;
+	  color: #FFF;
+	  margin: 2px;
+	  width: 42px;
+	  height: 42px;
+	  text-shadow: -1px -1px 0px #800000;
+	  background-color: gray;
+	  border-top: 2px solid #800000;
+	  border-right: 2px solid #800000;
+	  border-bottom: 2px solid #800000;
+	  border-left: 2px solid #800000;
+	  outline: none;
+  }
+  .ClearButton :hover{
+	color: rgb(247, 93, 10);
+  }
+  
+  h1{
+	  color:rgb(15, 15, 15);
+	  font-size: 52px;
+	  font-family:'Times New Roman', Times, serif;
+	  text-justify: newspaper;
+	  text-align: center;
+  
+  }
+  .container{
+	      border: 4px solid black;
+		  border-radius: 12px;
+		  background: rgba(23, 235, 4, 0.589);
+		  background-size: cover;
+		  position:absolute;
+		  top:50%;
+		  left:50%;
+		  transform:translateX(-50%) translateY(-50%)
+  }
+</style>
+<body>
+    <h1>Calculator</h1>
+    <div class="container">
+        <form name="form">
+            <input class="textview" name="textview">
+        </form>
+            <table>
+                <tr>
+                        <td><input class="ClearButton" type="button" value="AC" onclick="clean()"></td>
+                        <td><input class="button" type="button" value="C" onclick="back()"></td>
+                        <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                        <td><input class="button" type="button" value="x" onclick="insert('*')"></td>
+                </tr>
+                <tr>
+                        <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                        <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                        <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                        <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                 </tr>
+                 <tr>
+                        <td><input class="button"  type="button" value="4" onclick=insert(4)></td>
+                        <td><input class="button" type="button" value="5" onclick=insert(5)></td>
+                        <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                        <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+                </tr>
+                 <tr>
+                        <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                        <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                        <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                        <td rowspan="5"><input class="equalButton" type="button" value="=" onclick=equals()></td>
+              </tr>
+                <tr>
+                        <td><input class="button" type="button" value="%" onclick="insert('%')"></td>
+                        <td><input class="button" type="button" value="0" onclick="insert(0)"></td>
+                        <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+                        
+                </tr>
+
+            </table>
+    </div>
+    <script>
+        function insert(num){
+    document.form.textview.value=document.form.textview.value+num;
+  }
+  
+  function equals(){
+    var txt=document.form.textview.value;
+    if(txt)
+    document.form.textview.value=eval(txt);
+    else
+      document.form.textview.value='ERROR'
+      
+  }
+  
+  function clean(){
+    document.form.textview.value="";
+  }
+  
+  function back(){
+    var txt=document.form.textview.value;
+    document.form.textview.value=txt.substring(0,txt.length-1);
+  }
+    </script>
+</body>
+</html>
